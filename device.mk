@@ -249,6 +249,9 @@ PRODUCT_PACKAGES += \
 	keystore.msm8960
 
 PRODUCT_PACKAGES += \
+	OptimusGsettings
+
+PRODUCT_PACKAGES += \
 	wpa_supplicant_overlay.conf \
 	p2p_supplicant_overlay.conf
 
