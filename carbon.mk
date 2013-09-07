@@ -34,7 +34,7 @@ $(call inherit-product, vendor/carbon/config/common_phone.mk)
 PRODUCT_DEVICE := geeb
 PRODUCT_BRAND := LGE
 PRODUCT_NAME := carbon_geeb
-PRODUCT_MODEL := Optimus G
+PRODUCT_MODEL := LG Optimus G
 PRODUCT_MANUFACTURER := LGE
 PRODUCT_PROPERTY_OVERRIDES += ro.buildzipid=carbon.geeb.$(shell date +%m%d%y).$(shell date +%H%M%S)
 
