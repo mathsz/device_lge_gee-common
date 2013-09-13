@@ -31,4 +31,10 @@
             android:storageDescription="@string/storage_sd_card"
             android:removable="true"
             android:maxFileSize="4096" />
+    <!-- USB OTG -->
+    <storage
+        android:storageDescription="@string/storage_usb"
+        android:mountPoint="/storage/usbdisk0"
+        android:primary="false"
+        android:removable="true" />
 </StorageList>
