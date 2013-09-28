@@ -42,6 +42,9 @@ BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01600000
 TARGET_KERNEL_CONFIG := geeb_defconfig
 TARGET_KERNEL_SOURCE := kernel/lge/geeb
 
+# Use JWR66Y kernel compatibility fix
+TARGET_USE_JWR66Y := true
+
 TARGET_OTA_ASSERT_DEVICE := mako,geeb,gee_a,e970,gee,geebus
 
 BOARD_USES_ALSA_AUDIO:= true
