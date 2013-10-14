@@ -14,5 +14,20 @@
 # limitations under the License.
 #
 
-add_lunch_combo full_geeb-userdebug
-add_lunch_combo omni_geeb-userdebug
+# Sample: This is where we'd set a backup provider if we had one
+# $(call inherit-product, device/sample/products/backup_overlay.mk)
+
+# Inherit from the common Open Source product configuration
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+
+# Inherit from our omni product configuration
+$(call inherit-product, vendor/omni/config/common.mk)
+
+# Inherit device configuration
+$(call inherit-product, device/lge/geeb/full_geeb.mk)
+
+PRODUCT_NAME := omni_geeb
+PRODUCT_DEVICE := geeb
+PRODUCT_BRAND := LGE
+PRODUCT_MODEL := LG Optimus G
+PRODUCT_MANUFACTURER := LGE
