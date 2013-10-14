@@ -23,13 +23,24 @@ PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-PRODUCT_NAME := full_geeb
+# Inherit from our omni product configuration
+$(call inherit-product, vendor/omni/config/common.mk)
+
+# Inherit from hardware-specific part of the product configuration
+$(call inherit-product, device/lge/geeb/device.mk)
+
+# Specify phone tech before including full_phone
+PRODUCT_COPY_FILES := vendor/omni/prebuilt/etc/apns-conf.xml:system/etc/apns-conf.xml
+
+PRODUCT_NAME := omni_geeb
 PRODUCT_DEVICE := geeb
 PRODUCT_BRAND := LGE
 PRODUCT_MODEL := LG Optimus G
 PRODUCT_MANUFACTURER := LGE
-PRODUCT_RESTRICT_VENDOR_FILES := false
 
-# Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/lge/geeb/device.mk)
+# Kernel inline build
+TARGET_KERNEL_CONFIG := geeb_defconfig
+TARGET_VARIANT_CONFIG := geeb_defconfig
+TARGET_SELINUX_CONFIG := geeb_defconfig
+
 $(call inherit-product-if-exists, vendor/lge/gee/gee-vendor.mk)
