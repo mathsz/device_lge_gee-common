@@ -43,6 +43,9 @@ on init
     export SECONDARY_STORAGE /storage/sdcard1
     symlink /storage/sdcard1 /external_sd
 
+    mkdir /sns 0775 system system
+    mkdir /sns/cal 0771 system system
+
     # Setup custom emergency number list based on
     # the MCC. This is needed by RIL.
     setprop persist.radio.custom_ecc "1"
