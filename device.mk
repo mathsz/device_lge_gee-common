@@ -94,13 +94,10 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
 	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
 	frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+	frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
 	frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
 	frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
 
-
-# NFC firmware
-PRODUCT_COPY_FILES += \
-	device/lge/geeb/prebuilt/libpn544_fw.so:system/vendor/firmware/libpn544_fw.so
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -246,9 +243,12 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	rild.libpath=/system/lib/libril-qc-qmi-1.so
 
 PRODUCT_PROPERTY_OVERRIDES += \
-        telephony.lteOnCdmaDevice=0 \
-        telephony.lteOnGsmDevice=1 \
-        ro.telephony.default_network=9
+	telephony.lteOnCdmaDevice=1 \
+	telephony.lte.cdma.device=1 \
+	telephony.lteOnGsmDevice=1 \
+	telephony.lte.gsm.device=1 \
+	ro.telephony.default_network=10 \
+	ro.ril.def.preferred.network=10
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	drm.service.enabled=true
@@ -271,9 +271,25 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp
 
-$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
+# Setup custom emergency number list based on the MCC. This is needed by RIL
+PRODUCT_PROPERTY_OVERRIDES += \
+        persist.radio.custom_ecc=1
 
-# This is the geeb-specific audio package
-# $(call inherit-product-if-exists, frameworks/base/data/sounds/AudioPackage10.mk)
+# update 1x signal strength after 2s
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+	persist.radio.snapshot_enabled=1 \
+	persist.radio.snapshot_timer=2
+
+# Read value of network mode from NV
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.radio.mode_pref_nv10=1
+
+# Request modem to send PLMN name always irrespective
+# of display condition in EFSPN.
+# RIL uses this property.
+PRODUCT_PROPERTY_OVERRIDES += \
+	persist.radio.always_send_plmn=true
+
+$(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
 $(call inherit-product, hardware/qcom/msm8960/msm8960.mk)
