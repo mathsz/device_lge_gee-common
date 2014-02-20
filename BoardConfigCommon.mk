@@ -45,7 +45,7 @@ TARGET_KERNEL_SOURCE := kernel/lge/gee
 
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=gee lpj=67677 user_debug=31
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=geeb lpj=67677 user_debug=31
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01600000
 
 TARGET_OTA_ASSERT_DEVICE := geeb,gee_a,e970,gee,geebus,e971,e973,e975,geehrc,geebusc,geeb_att,geeb_att_us,geespr
@@ -156,3 +156,5 @@ USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY:= true
 OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
 HAVE_ADRENO_SOURCE:= false
+
+USE_SET_METADATA := false
