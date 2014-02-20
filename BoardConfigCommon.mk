@@ -45,7 +45,7 @@ TARGET_KERNEL_SOURCE := kernel/lge/gee
 
 BOARD_KERNEL_BASE := 0x80200000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=geeb lpj=67677 user_debug=31
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=gee lpj=67677 user_debug=31
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01600000
 
 TARGET_OTA_ASSERT_DEVICE := geeb,gee_a,e970,gee,geebus,e971,e973,e975,geehrc,geebusc,geeb_att,geeb_att_us,geespr
@@ -63,9 +63,9 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm8960
 TARGET_BOOTLOADER_BOARD_NAME := GEE
 TARGET_BOOTLOADER_NAME=gee
-TARGET_BOARD_INFO_FILE := device/lge/geeb/board-info.txt
+TARGET_BOARD_INFO_FILE := device/lge/gee-common/board-info.txt
 
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/geeb/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/gee-common/bluetooth
 
 # FIXME: HOSTAPD-derived wifi driver
 BOARD_HAS_QCOM_WLAN := true
@@ -78,7 +78,7 @@ BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_AP  := "ap"
 
-BOARD_EGL_CFG := device/lge/geeb/egl.cfg
+BOARD_EGL_CFG := device/lge/gee-common/egl.cfg
 
 #BOARD_USES_HGL := true
 #BOARD_USES_OVERLAY := true
@@ -94,7 +94,7 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_RECOVERY_UI_LIB := librecovery_ui_geeb
 
-TARGET_RECOVERY_FSTAB = device/lge/geeb/fstab.geeb
+TARGET_RECOVERY_FSTAB = device/lge/gee-common/fstab.geeb
 RECOVERY_FSTAB_VERSION = 2
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 23068672 # 22M
@@ -115,7 +115,7 @@ BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 TARGET_NO_RPC := true
 TARGET_PROVIDES_GPS_LOC_API := true
 
-TARGET_RELEASETOOLS_EXTENSIONS := device/lge/geeb
+TARGET_RELEASETOOLS_EXTENSIONS := device/lge/gee-common
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
@@ -127,7 +127,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 BOARD_SEPOLICY_DIRS += \
-        device/lge/geeb/sepolicy
+        device/lge/gee-common/sepolicy
 
 BOARD_SEPOLICY_UNION := \
        app.te \
@@ -149,7 +149,7 @@ BOARD_SEPOLICY_UNION := \
        ueventd.te \
        wpa.te
 
-BOARD_HARDWARE_CLASS := device/lge/geeb/cmhw/
+BOARD_HARDWARE_CLASS := device/lge/gee-common/cmhw/
 
 USE_DEVICE_SPECIFIC_QCOM_PROPRIETARY:= true
 
