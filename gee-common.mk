@@ -19,7 +19,8 @@
 #
 # Everything in this directory will become public
 
-DEVICE_PACKAGE_OVERLAYS := device/lge/geeb/overlay
+DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
+DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/common-overlay
 
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
@@ -36,47 +37,47 @@ PRODUCT_PACKAGES += \
     charger
 
 PRODUCT_COPY_FILES += \
-	device/lge/geeb/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
-	device/lge/geeb/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-	device/lge/geeb/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
+	$(LOCAL_PATH)/WCNSS_cfg.dat:system/vendor/firmware/wlan/prima/WCNSS_cfg.dat \
+	$(LOCAL_PATH)/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+	$(LOCAL_PATH)/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
 
 # Script for baseband name resolution
 PRODUCT_COPY_FILES += \
-	device/lge/geeb/fetch-swv:system/bin/fetch-swv \
-	device/lge/geeb/efsbackup.sh:system/bin/efsbackup.sh
+	$(LOCAL_PATH)/fetch-swv:system/bin/fetch-swv \
+	$(LOCAL_PATH)/efsbackup.sh:system/bin/efsbackup.sh
 
 PRODUCT_COPY_FILES += \
-	device/lge/geeb/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 \
-	device/lge/geeb/audio_policy.conf:system/etc/audio_policy.conf
+	$(LOCAL_PATH)/snd_soc_msm_2x_Fusion3:system/etc/snd_soc_msm/snd_soc_msm_2x_Fusion3 \
+	$(LOCAL_PATH)/audio_policy.conf:system/etc/audio_policy.conf
 
 PRODUCT_COPY_FILES += \
-	device/lge/geeb/mixer_paths.xml:system/etc/mixer_paths.xml
+	$(LOCAL_PATH)/mixer_paths.xml:system/etc/mixer_paths.xml
 
 PRODUCT_COPY_FILES += \
-	device/lge/geeb/thermald-geeb.conf:system/etc/thermald.conf
+	$(LOCAL_PATH)/thermald-geeb.conf:system/etc/thermald.conf
 
 PRODUCT_COPY_FILES += \
-	device/lge/geeb/init.geeb.rc:root/init.geeb.rc \
-	device/lge/geeb/init.geeb.usb.rc:root/init.geeb.usb.rc \
-	device/lge/geeb/fstab.geeb:root/fstab.geeb \
-	device/lge/geeb/ueventd.geeb.rc:root/ueventd.geeb.rc \
-	device/lge/geeb/media_profiles.xml:system/etc/media_profiles.xml \
-	device/lge/geeb/media_codecs.xml:system/etc/media_codecs.xml
+	$(LOCAL_PATH)/init.geeb.rc:root/init.geeb.rc \
+	$(LOCAL_PATH)/init.geeb.usb.rc:root/init.geeb.usb.rc \
+	$(LOCAL_PATH)/fstab.geeb:root/fstab.geeb \
+	$(LOCAL_PATH)/ueventd.geeb.rc:root/ueventd.geeb.rc \
+	$(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml \
+	$(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml
 
 # Prebuilt kl and kcm keymaps
 PRODUCT_COPY_FILES += \
-	device/lge/geeb/apq8064-tabla-snd-card_Button_Jack.kl:system/usr/keylayout/apq8064-tabla-snd-card_Button_Jack.kl \
-	device/lge/geeb/hs_detect.kl:system/usr/keylayout/hs_detect.kl \
-	device/lge/geeb/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
-	device/lge/geeb/keypad_8064.kl:system/usr/keylayout/keypad_8064.kl \
-	device/lge/geeb/apq8064-tabla-snd-card_Button_Jack.kcm:system/usr/keychars/apq8064-tabla-snd-card_Button_Jack.kcm \
-	device/lge/geeb/hs_detect.kcm:system/usr/keychars/hs_detect.kcm \
-	device/lge/geeb/keypad_8064.kcm:system/usr/keychars/keypad_8064.kcm \
-	device/lge/geeb/pmic8xxx_pwrkey.kcm:system/usr/keychars/pmic8xxx_pwrkey.kcm
+	$(LOCAL_PATH)/apq8064-tabla-snd-card_Button_Jack.kl:system/usr/keylayout/apq8064-tabla-snd-card_Button_Jack.kl \
+	$(LOCAL_PATH)/hs_detect.kl:system/usr/keylayout/hs_detect.kl \
+	$(LOCAL_PATH)/pmic8xxx_pwrkey.kl:system/usr/keylayout/pmic8xxx_pwrkey.kl \
+	$(LOCAL_PATH)/keypad_8064.kl:system/usr/keylayout/keypad_8064.kl \
+	$(LOCAL_PATH)/apq8064-tabla-snd-card_Button_Jack.kcm:system/usr/keychars/apq8064-tabla-snd-card_Button_Jack.kcm \
+	$(LOCAL_PATH)/hs_detect.kcm:system/usr/keychars/hs_detect.kcm \
+	$(LOCAL_PATH)/keypad_8064.kcm:system/usr/keychars/keypad_8064.kcm \
+	$(LOCAL_PATH)/pmic8xxx_pwrkey.kcm:system/usr/keychars/pmic8xxx_pwrkey.kcm
 
 # Prebuilt input device calibration files
 PRODUCT_COPY_FILES += \
-	device/lge/geeb/touch_dev.idc:system/usr/idc/touch_dev.idc
+	$(LOCAL_PATH)/touch_dev.idc:system/usr/idc/touch_dev.idc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -109,9 +110,9 @@ PRODUCT_PACKAGES += \
 
 # NFCEE access control
 #ifeq ($(TARGET_BUILD_VARIANT),user)
-    NFCEE_ACCESS_PATH := device/lge/geeb/nfc/nfcee_access.xml
+    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/nfc/nfcee_access.xml
 #else
-#    NFCEE_ACCESS_PATH := device/lge/geeb/nfc/nfcee_access_debug.xml
+#    NFCEE_ACCESS_PATH := $(LOCAL_PATH)/nfc/nfcee_access_debug.xml
 #endif
 
 # NFC access control + feature files + configuration
@@ -180,7 +181,7 @@ PRODUCT_PACKAGES += \
 # Voice processing
 PRODUCT_PACKAGES += libqcomvoiceprocessing
 PRODUCT_COPY_FILES += \
-    device/lge/geeb/audio_effects.conf:system/vendor/etc/audio_effects.conf
+    $(LOCAL_PATH)/audio_effects.conf:system/vendor/etc/audio_effects.conf
 
 PRODUCT_PACKAGES += \
 	hci_qcomm_init
@@ -189,7 +190,7 @@ PRODUCT_PACKAGES += \
 	power.msm8960
 
 PRODUCT_COPY_FILES += \
-	device/lge/geeb/init.geeb.bt.sh:system/etc/init.geeb.bt.sh
+	$(LOCAL_PATH)/init.geeb.bt.sh:system/etc/init.geeb.bt.sh
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.qualcomm.bt.hci_transport=smd
@@ -211,7 +212,7 @@ PRODUCT_PACKAGES += \
 
 # GPS configuration
 PRODUCT_COPY_FILES += \
-        device/lge/geeb/gps.conf:system/etc/gps.conf
+        $(LOCAL_PATH)/gps.conf:system/etc/gps.conf
 
 # GPS
 PRODUCT_PACKAGES += \
